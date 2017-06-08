@@ -139,6 +139,6 @@
     <ILMergeInputAssemblies Include="bin\Debug\\YamlDotNet.dll" />
   </ItemGroup>
   <Target Name="AfterBuild" Condition="'$(Configuration)' == 'Release'">
-    <ILMergeTool InputAssemblies="@(ILMergeInputAssemblies)" OutputFile="$(OutputPath)\merged\$(AssemblyName).exe" ToolPath="..\packages\ILMerge.2.14.1208\tools\ILMerge.exe" />
+    <ILMergeTool InputAssemblies="@(ILMergeInputAssemblies)" OutputFile="$(OutputPath)\$(AssemblyName).exe" ToolPath="..\packages\ILMerge.2.14.1208\tools\ILMerge.exe" />
   </Target>
 </Project>
