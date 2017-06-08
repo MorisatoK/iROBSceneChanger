@@ -14,5 +14,5 @@ There is no configuration for the iRacing part, it always is looking for the dri
 + `Garage` is the name of the OBS scene that should be switched to when getting out of the car.
 
 ## Known bugs and/or limitations
-There is some amount of sanity, but I would not assume all cases are covered. It's a personal project, and I know what I'm doing with it ;)  
+There is some amount of sanity, but I would not assume all cases are covered. It's a personal project, and I know what I'm doing with it ;) (actually I don't)  
 The implementation of [obs-websocket-dotnet](https://github.com/Palakis/obs-websocket-dotnet) does not handle forceful disconnects very well (read: it doesn't at all). So if your OBS crashes most likely this app will crash too.
