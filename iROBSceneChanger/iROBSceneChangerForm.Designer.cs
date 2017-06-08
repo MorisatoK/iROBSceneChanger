@@ -33,16 +33,16 @@
             this.driverLabel = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
             this.OBSGroupBox = new System.Windows.Forms.GroupBox();
-            this.inGarageSceneTextBox = new System.Windows.Forms.TextBox();
             this.inGarageLabel = new System.Windows.Forms.Label();
-            this.inCarSceneTextBox = new System.Windows.Forms.TextBox();
             this.inCarLabel = new System.Windows.Forms.Label();
             this.currentSceneLabel = new System.Windows.Forms.Label();
             this.txtServerPasswordLabel = new System.Windows.Forms.Label();
             this.txtServerIPLabel = new System.Windows.Forms.Label();
+            this.btnConnect = new System.Windows.Forms.Button();
+            this.inGarageSceneTextBox = new System.Windows.Forms.TextBox();
+            this.inCarSceneTextBox = new System.Windows.Forms.TextBox();
             this.txtServerPassword = new System.Windows.Forms.TextBox();
             this.txtServerIP = new System.Windows.Forms.TextBox();
-            this.btnConnect = new System.Windows.Forms.Button();
             this.iRGroupBox.SuspendLayout();
             this.OBSGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -105,15 +105,6 @@
             this.OBSGroupBox.TabStop = false;
             this.OBSGroupBox.Text = "OBS Websocket";
             // 
-            // inGarageSceneTextBox
-            // 
-            this.inGarageSceneTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.inGarageSceneTextBox.Location = new System.Drawing.Point(242, 46);
-            this.inGarageSceneTextBox.Name = "inGarageSceneTextBox";
-            this.inGarageSceneTextBox.Size = new System.Drawing.Size(110, 20);
-            this.inGarageSceneTextBox.TabIndex = 23;
-            this.inGarageSceneTextBox.Text = "InGame";
-            // 
             // inGarageLabel
             // 
             this.inGarageLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -123,15 +114,6 @@
             this.inGarageLabel.Size = new System.Drawing.Size(45, 13);
             this.inGarageLabel.TabIndex = 22;
             this.inGarageLabel.Text = "Garage:";
-            // 
-            // inCarSceneTextBox
-            // 
-            this.inCarSceneTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.inCarSceneTextBox.Location = new System.Drawing.Point(64, 46);
-            this.inCarSceneTextBox.Name = "inCarSceneTextBox";
-            this.inCarSceneTextBox.Size = new System.Drawing.Size(110, 20);
-            this.inCarSceneTextBox.TabIndex = 21;
-            this.inCarSceneTextBox.Text = "Driving";
             // 
             // inCarLabel
             // 
@@ -169,23 +151,6 @@
             this.txtServerIPLabel.TabIndex = 17;
             this.txtServerIPLabel.Text = "IP:PORT:";
             // 
-            // txtServerPassword
-            // 
-            this.txtServerPassword.Location = new System.Drawing.Point(242, 16);
-            this.txtServerPassword.Name = "txtServerPassword";
-            this.txtServerPassword.Size = new System.Drawing.Size(110, 20);
-            this.txtServerPassword.TabIndex = 16;
-            this.txtServerPassword.Text = "bl4f4s3l";
-            this.txtServerPassword.UseSystemPasswordChar = true;
-            // 
-            // txtServerIP
-            // 
-            this.txtServerIP.Location = new System.Drawing.Point(64, 16);
-            this.txtServerIP.Name = "txtServerIP";
-            this.txtServerIP.Size = new System.Drawing.Size(110, 20);
-            this.txtServerIP.TabIndex = 15;
-            this.txtServerIP.Text = "ws://127.0.0.1:4444";
-            // 
             // btnConnect
             // 
             this.btnConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -197,6 +162,45 @@
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
+            // inGarageSceneTextBox
+            // 
+            this.inGarageSceneTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.inGarageSceneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::iROBSceneChanger.Properties.Settings.Default, "InGarageScene", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.inGarageSceneTextBox.Location = new System.Drawing.Point(242, 46);
+            this.inGarageSceneTextBox.Name = "inGarageSceneTextBox";
+            this.inGarageSceneTextBox.Size = new System.Drawing.Size(110, 20);
+            this.inGarageSceneTextBox.TabIndex = 23;
+            this.inGarageSceneTextBox.Text = global::iROBSceneChanger.Properties.Settings.Default.InGarageScene;
+            // 
+            // inCarSceneTextBox
+            // 
+            this.inCarSceneTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.inCarSceneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::iROBSceneChanger.Properties.Settings.Default, "InCarScene", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.inCarSceneTextBox.Location = new System.Drawing.Point(64, 46);
+            this.inCarSceneTextBox.Name = "inCarSceneTextBox";
+            this.inCarSceneTextBox.Size = new System.Drawing.Size(110, 20);
+            this.inCarSceneTextBox.TabIndex = 21;
+            this.inCarSceneTextBox.Text = global::iROBSceneChanger.Properties.Settings.Default.InCarScene;
+            // 
+            // txtServerPassword
+            // 
+            this.txtServerPassword.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::iROBSceneChanger.Properties.Settings.Default, "WsServerPassword", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtServerPassword.Location = new System.Drawing.Point(242, 16);
+            this.txtServerPassword.Name = "txtServerPassword";
+            this.txtServerPassword.Size = new System.Drawing.Size(110, 20);
+            this.txtServerPassword.TabIndex = 16;
+            this.txtServerPassword.Text = global::iROBSceneChanger.Properties.Settings.Default.WsServerPassword;
+            this.txtServerPassword.UseSystemPasswordChar = true;
+            // 
+            // txtServerIP
+            // 
+            this.txtServerIP.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::iROBSceneChanger.Properties.Settings.Default, "WsServer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtServerIP.Location = new System.Drawing.Point(64, 16);
+            this.txtServerIP.Name = "txtServerIP";
+            this.txtServerIP.Size = new System.Drawing.Size(110, 20);
+            this.txtServerIP.TabIndex = 15;
+            this.txtServerIP.Text = global::iROBSceneChanger.Properties.Settings.Default.WsServer;
+            // 
             // iROBSceneChangerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,7 +208,9 @@
             this.ClientSize = new System.Drawing.Size(719, 131);
             this.Controls.Add(this.OBSGroupBox);
             this.Controls.Add(this.iRGroupBox);
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::iROBSceneChanger.Properties.Settings.Default, "WindowLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Location = global::iROBSceneChanger.Properties.Settings.Default.WindowLocation;
             this.Name = "iROBSceneChangerForm";
             this.Text = "iROBSceneChanger";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.iROBSceneChangerForm_FormClosing);

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using iRacingSdkWrapper;
 using OBSWebsocketDotNet;
+using iROBSceneChanger.Properties;
 
 namespace iROBSceneChanger
 {
@@ -279,7 +280,9 @@ namespace iROBSceneChanger
         {
             wrapper.Stop();
             obs.Disconnect();
-        }
 
+            // Save settings
+            Settings.Default.Save();
+        }
     }
 }
