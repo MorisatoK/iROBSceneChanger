@@ -207,7 +207,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "iROBSceneChangerForm";
             this.Text = "iROBSceneChanger";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.iROBSceneChangerForm_FormClosing);
             this.iRGroupBox.ResumeLayout(false);
             this.iRGroupBox.PerformLayout();
             this.OBSGroupBox.ResumeLayout(false);

@@ -275,7 +275,7 @@ namespace iROBSceneChanger
         }
         #endregion
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void iROBSceneChangerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             wrapper.Stop();
             obs.Disconnect();
