@@ -258,6 +258,8 @@ namespace iROBSceneChanger
             btnConnect.Enabled = false;
             txtServerIP.Enabled = false;
             txtServerPassword.Enabled = false;
+            inCarSceneTextBox.Enabled = false;
+            inGarageSceneTextBox.Enabled = false;
             obsWsConnected = true;
 
             btnConnect.Text = "Connected";
