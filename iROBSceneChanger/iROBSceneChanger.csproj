@@ -128,25 +128,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <UsingTask
-    AssemblyFile="..\packages\ILMerge.Tools.MSBuildToolTask.2.14.1208.49\tools\ILMerge.Tools.MSBuildToolTask.dll"
-    TaskName="ILMerge.Tools.MSBuildToolTask.ILMergeTool"
-    />
-    <ItemGroup>
-      <ILMergeInputAssemblies Include="$(OutputPath)\iROBSceneChanger.exe" />
-      <ILMergeInputAssemblies Include="$(OutputPath)\iRacingSdkWrapper.dll" />
-      <ILMergeInputAssemblies Include="$(OutputPath)\iRSDKSharp.dll" />
-      <ILMergeInputAssemblies Include="$(OutputPath)\Newtonsoft.Json.dll" />
-      <ILMergeInputAssemblies Include="$(OutputPath)\obs-websocket-dotnet.dll" />
-      <ILMergeInputAssemblies Include="$(OutputPath)\websocket-sharp.dll" />
-      <ILMergeInputAssemblies Include="$(OutputPath)\YamlDotNet.dll" />
-    </ItemGroup>
-
-    <Target Name="AfterBuild" Condition="'$(Configuration)' == 'Release'">
-      <ILMergeTool
-        InputAssemblies="@(ILMergeInputAssemblies)"
-        OutputFile="$(OutputPath)\merged\$(AssemblyName).exe"
-        ToolPath="..\packages\ILMerge.2.14.1208\tools\ILMerge.exe"
-        />
-    </Target>
+  <UsingTask AssemblyFile="..\packages\ILMerge.Tools.MSBuildToolTask.2.14.1208.49\tools\ILMerge.Tools.MSBuildToolTask.dll" TaskName="ILMerge.Tools.MSBuildToolTask.ILMergeTool" />
+  <ItemGroup>
+    <ILMergeInputAssemblies Include="bin\Debug\\iROBSceneChanger.exe" />
+    <ILMergeInputAssemblies Include="bin\Debug\\iRacingSdkWrapper.dll" />
+    <ILMergeInputAssemblies Include="bin\Debug\\iRSDKSharp.dll" />
+    <ILMergeInputAssemblies Include="bin\Debug\\Newtonsoft.Json.dll" />
+    <ILMergeInputAssemblies Include="bin\Debug\\obs-websocket-dotnet.dll" />
+    <ILMergeInputAssemblies Include="bin\Debug\\websocket-sharp.dll" />
+    <ILMergeInputAssemblies Include="bin\Debug\\YamlDotNet.dll" />
+  </ItemGroup>
+  <Target Name="AfterBuild" Condition="'$(Configuration)' == 'Release'">
+    <ILMergeTool InputAssemblies="@(ILMergeInputAssemblies)" OutputFile="$(OutputPath)\merged\$(AssemblyName).exe" ToolPath="..\packages\ILMerge.2.14.1208\tools\ILMerge.exe" />
+  </Target>
 </Project>
