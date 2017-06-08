@@ -8,7 +8,7 @@ Out of personal requirements to switch between two scenes in OBS depending on be
 + In OBS you need the [OBS Websocket Plugin](https://github.com/Palakis/obs-websocket).
 
 ## Configuration
-There is no configuration for the iRacing part, it always is looking for the driver (you). The OBS part is currently hardcoded (I'm lazy). However you can of course change the default values, but have to enter them again after a restart of the application. 
+There is no configuration for the iRacing part, it always is looking for the driver (you). The OBS part is configurable: 
 + `IP:PORT` is the IP and Port configured for the Websocket server in OBS. *This can be running on another PC!* (but untested)
 + `Password` is the password configured for the Websocket server in OBS.
 + `In Car` is the name of the OBS scene that should be switched to when entering the car.
