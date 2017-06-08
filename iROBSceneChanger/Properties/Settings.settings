@@ -1,7 +1,21 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="iROBSceneChanger.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WsServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ws://127.0.0.1:4444</Value>
+    </Setting>
+    <Setting Name="WsServerPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="InCarScene" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Driving</Value>
+    </Setting>
+    <Setting Name="InGarageScene" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Garage</Value>
+    </Setting>
+    <Setting Name="WindowLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">300, 300</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
