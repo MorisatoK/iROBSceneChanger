@@ -203,9 +203,6 @@ namespace iROBSceneChanger
             if (!obsWsConnected)
                 return;
 
-            if (string.IsNullOrEmpty(inCarSceneTextBox.Text) || string.IsNullOrEmpty(inGarageSceneTextBox.Text))
-                return;
-
             if (me == null || me.IsOnTrack == oldIsOnTrack)
                 return;
 
@@ -248,18 +245,10 @@ namespace iROBSceneChanger
                 return;
             }
 
-            var scenes = obs.ListScenes();
-            var scenesFound = false;
+            var sceneNames = new[] { inCarSceneTextBox.Text, inGarageSceneTextBox.Text };
+            var scenesFound = obs.ListScenes().Where(s => sceneNames.Contains(s.Name));
 
-            foreach (var scene in scenes)
-            {
-                if (scene.Name == inCarSceneTextBox.Text || scene.Name == inGarageSceneTextBox.Text)
-                {
-                    scenesFound = true;
-                }
-            }
-
-            if (!scenesFound)
+            if (scenesFound.Count() < 2)
             {
                 obs.Disconnect();
                 MessageBox.Show("Provided OBS scenes not found in scene collection.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
