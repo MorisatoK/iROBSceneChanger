@@ -13,9 +13,7 @@ namespace iROBSceneChanger
         private SdkWrapper wrapper;
         private OBSWebsocket obs;
 
-        private Driver me;
-        private List<Driver> drivers;
-        private bool isUpdatingDrivers;
+        private TelemetryInfo telemetry;
         private bool oldIsOnTrack;
         private bool obsWsConnected;
 
@@ -33,11 +31,9 @@ namespace iROBSceneChanger
             // Listen for various iRacing events
             wrapper.Connected += wrapper_Connected;
             wrapper.Disconnected += wrapper_Disconnected;
-            wrapper.SessionInfoUpdated += wrapper_SessionInfoUpdated;
             wrapper.TelemetryUpdated += wrapper_TelemetryUpdated;
 
-            // Bind a list of drivers to the grid
-            drivers = new List<Driver>();
+            // Save OnTrack state
             oldIsOnTrack = false;
 
             // Create a new instance of the OBSWebsocket object
@@ -52,7 +48,6 @@ namespace iROBSceneChanger
         }
 
         #region Connecting, disconnecting, etc
-
         private void StatusChanged()
         {
             if (wrapper.IsConnected)
@@ -97,94 +92,10 @@ namespace iROBSceneChanger
 
         #region Events
 
-        private void wrapper_SessionInfoUpdated(object sender, SdkWrapper.SessionInfoUpdatedEventArgs e)
-        {
-            // Indicate that we are updating the drivers list
-            isUpdatingDrivers = true;
-
-            // Parse the Drivers section of the session info into a list of drivers
-            ParseDrivers(e.SessionInfo);
-
-            // Indicate we are finished updating drivers
-            isUpdatingDrivers = false;
-        }
-
         private void wrapper_TelemetryUpdated(object sender, SdkWrapper.TelemetryUpdatedEventArgs e)
         {
-            // Besides the driver details found in the session info, there's also things in the telemetry
-            // that are properties of a driver, such as their lap, lap distance, track surface, distance relative
-            // to yourself and more.
-            // We update the existing list of drivers with the telemetry values here.
-
-            // If we are currently renewing the drivers list it makes little sense to update the existing drivers
-            // because they will change anyway
-            if (isUpdatingDrivers) return;
-
-            UpdateDriversTelemetry(e.TelemetryInfo);
+            telemetry = e.TelemetryInfo;
             ChangeScene();
-        }
-
-        #endregion
-
-        #region Drivers
-
-        // Parse the YAML DriverInfo section that contains information such as driver id, name, license, car number, etc.
-        private void ParseDrivers(SessionInfo sessionInfo)
-        {
-            int id = 0;
-            Driver driver;
-
-            var newDrivers = new List<Driver>();
-
-            // Loop through drivers until none are found anymore
-            do
-            {
-                driver = null;
-
-                // Construct a yaml query that finds each driver and his info in the Session Info yaml string
-                // This query can be re-used for every property for one driver (with the specified id)
-                YamlQuery query = sessionInfo["DriverInfo"]["Drivers"]["CarIdx", id];
-
-                // Try to get the UserName of the driver (because its the first value given)
-                // If the UserName value is not found (name == null) then we found all drivers and we can stop
-                string name = query["UserName"].GetValue();
-
-                if (name != null)
-                {
-                    // Find this driver in the list
-                    // This strange " => " syntax is called a lambda expression and is short for a loop through all drivers
-                    // Read as: select the first driver 'd', if any, whose Name is equal to name.
-                    driver = drivers.FirstOrDefault(d => d.Name == name);
-
-                    if (driver == null)
-                    {
-                        // Or create a new Driver if we didn't find him before
-                        driver = new Driver();
-                        driver.Id = id;
-                        driver.Name = name;
-                        driver.CustomerId = int.Parse(query["UserID"].GetValue("0")); // default value 0
-                    }
-                    newDrivers.Add(driver);
-
-                    id++;
-                }
-            } while (driver != null);
-
-            // Replace old list of drivers with new list of drivers and update the grid
-            drivers.Clear();
-            drivers.AddRange(newDrivers);
-        }
-
-        private void UpdateDriversTelemetry(TelemetryInfo info)
-        {
-            // Get your own driver entry
-            // This strange " => " syntax is called a lambda expression and is short for a loop through all drivers
-            me = drivers.FirstOrDefault(d => d.Id == wrapper.DriverId);
-
-            if (me == null)
-                return;
-
-            me.IsOnTrack = info.IsOnTrack.Value;
         }
 
         #endregion
@@ -195,15 +106,15 @@ namespace iROBSceneChanger
             if (!obsWsConnected)
                 return;
 
-            if (me == null || me.IsOnTrack == oldIsOnTrack)
+            if (telemetry == null || telemetry.IsOnTrack.Value == oldIsOnTrack)
                 return;
 
-            if (me.IsOnTrack)
+            if (telemetry.IsOnTrack.Value)
                 obs.SetCurrentScene(inCarSceneTextBox.Text);
             else
                 obs.SetCurrentScene(inGarageSceneTextBox.Text);
 
-            oldIsOnTrack = me.IsOnTrack;
+            oldIsOnTrack = telemetry.IsOnTrack.Value;
         }
 
         private void onSceneChange(OBSWebsocket sender, string newSceneName)

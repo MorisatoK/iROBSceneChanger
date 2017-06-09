@@ -80,7 +80,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Driver.cs" />
     <Compile Include="iROBSceneChangerForm.cs">
       <SubType>Form</SubType>
     </Compile>
