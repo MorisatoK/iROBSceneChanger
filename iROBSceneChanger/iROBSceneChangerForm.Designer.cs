@@ -144,9 +144,8 @@
             // versionLabel
             // 
             this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(202, 17);
+            this.versionLabel.Size = new System.Drawing.Size(171, 17);
             this.versionLabel.Spring = true;
-            this.versionLabel.Text = global::iROBSceneChanger.Properties.Settings.Default.Version;
             // 
             // OBSStatus
             // 

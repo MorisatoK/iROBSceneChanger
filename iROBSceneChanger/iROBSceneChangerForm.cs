@@ -20,6 +20,7 @@ namespace iROBSceneChanger
         public iROBSceneChangerForm()
         {
             InitializeComponent();
+            this.Text = Application.ProductName + " " + Application.ProductVersion;
 
             // Create a new instance of the SdkWrapper object
             wrapper = new SdkWrapper();

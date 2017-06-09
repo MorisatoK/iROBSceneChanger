@@ -82,14 +82,5 @@ namespace iROBSceneChanger.Properties {
                 this["WindowLocation"] = value;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.1.0")]
-        public string Version {
-            get {
-                return ((string)(this["Version"]));
-            }
-        }
     }
 }
