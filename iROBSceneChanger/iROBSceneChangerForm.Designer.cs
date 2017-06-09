@@ -41,7 +41,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.iRStatusIcon = new System.Windows.Forms.ToolStripStatusLabel();
             this.iRStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.versionLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.OBSStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.OBSStatusIcon = new System.Windows.Forms.ToolStripStatusLabel();
@@ -160,7 +159,6 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.iRStatusIcon,
             this.iRStatus,
-            this.toolStripStatusLabel2,
             this.versionLabel,
             this.OBSStatus,
             this.OBSStatusIcon});
@@ -186,15 +184,10 @@
             this.iRStatus.Size = new System.Drawing.Size(95, 17);
             this.iRStatus.Text = "Disconnected";
             // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 17);
-            // 
             // versionLabel
             // 
             this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(441, 17);
+            this.versionLabel.Size = new System.Drawing.Size(472, 17);
             this.versionLabel.Spring = true;
             this.versionLabel.Text = global::iROBSceneChanger.Properties.Settings.Default.Version;
             // 
@@ -248,7 +241,6 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel iRStatusIcon;
         private System.Windows.Forms.ToolStripStatusLabel iRStatus;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel versionLabel;
         private System.Windows.Forms.ToolStripStatusLabel OBSStatusIcon;
         private System.Windows.Forms.ToolStripStatusLabel OBSStatus;
