@@ -59,26 +59,28 @@ namespace iROBSceneChanger
             {
                 if (wrapper.IsRunning)
                 {
-                    statusLabel.Text = "Status: connected!";
+                    iRStatus.Text = "Connected";
+                    iRStatus.Image = Resources.connected;
                 }
                 else
                 {
-                    statusLabel.Text = "Status: disconnected.";
+                    iRStatus.Text = "Disconnected";
+                    iRStatus.Image = Resources.disconnected;
                 }
             }
             else
             {
                 if (wrapper.IsRunning)
                 {
-                    statusLabel.Text = "Status: disconnected, waiting for sim...";
+                    iRStatus.Text = "Disconnected, waiting for sim...";
+                    iRStatus.Image = Resources.waiting;
                 }
                 else
                 {
-                    statusLabel.Text = "Status: disconnected";
+                    iRStatus.Text = "Disconnected";
+                    iRStatus.Image = Resources.disconnected;
                 }
             }
-            driverLabel.Text = "Driver: ";
-            trackLabel.Text = "IsOnTrack: ";
         }
 
         private void wrapper_Connected(object sender, EventArgs e)
@@ -119,7 +121,6 @@ namespace iROBSceneChanger
             if (isUpdatingDrivers) return;
 
             UpdateDriversTelemetry(e.TelemetryInfo);
-            UpdateDriverLabels();
             ChangeScene();
         }
 
@@ -184,15 +185,6 @@ namespace iROBSceneChanger
                 return;
 
             me.IsOnTrack = info.IsOnTrack.Value;
-        }
-
-        private void UpdateDriverLabels()
-        {
-            if (me == null)
-                return;
-
-            driverLabel.Text = "Driver: " + me.Name;
-            trackLabel.Text = "IsOnTrack: " + me.IsOnTrack.ToString();
         }
 
         #endregion

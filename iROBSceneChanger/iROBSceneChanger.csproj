@@ -100,6 +100,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -137,6 +138,13 @@
     <ILMergeInputAssemblies Include="bin\Debug\\obs-websocket-dotnet.dll" />
     <ILMergeInputAssemblies Include="bin\Debug\\websocket-sharp.dll" />
     <ILMergeInputAssemblies Include="bin\Debug\\YamlDotNet.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\connected.png" />
+    <Content Include="assets\disconnected.png" />
+    <Content Include="assets\iRacingSim.ico" />
+    <Content Include="assets\obs.ico" />
+    <Content Include="assets\waiting.png" />
   </ItemGroup>
   <Target Name="AfterBuild" Condition="'$(Configuration)' == 'Release'">
     <ILMergeTool InputAssemblies="@(ILMergeInputAssemblies)" OutputFile="$(OutputPath)\$(AssemblyName).exe" ToolPath="..\packages\ILMerge.2.14.1208\tools\ILMerge.exe" />
