@@ -95,7 +95,12 @@ namespace iROBSceneChanger
         private void wrapper_TelemetryUpdated(object sender, SdkWrapper.TelemetryUpdatedEventArgs e)
         {
             telemetry = e.TelemetryInfo;
+
+            if (telemetry.IsOnTrack.Value == oldIsOnTrack)
+                return;
+
             ChangeScene();
+            oldIsOnTrack = telemetry.IsOnTrack.Value;
         }
 
         #endregion
@@ -103,18 +108,13 @@ namespace iROBSceneChanger
         #region OBS stuff
         private void ChangeScene()
         {
-            if (!obsWsConnected)
-                return;
-
-            if (telemetry == null || telemetry.IsOnTrack.Value == oldIsOnTrack)
+            if (!obsWsConnected || telemetry == null)
                 return;
 
             if (telemetry.IsOnTrack.Value)
                 obs.SetCurrentScene(inCarSceneTextBox.Text);
             else
                 obs.SetCurrentScene(inGarageSceneTextBox.Text);
-
-            oldIsOnTrack = telemetry.IsOnTrack.Value;
         }
 
         private void onSceneChange(OBSWebsocket sender, string newSceneName)
