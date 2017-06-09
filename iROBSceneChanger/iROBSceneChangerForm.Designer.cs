@@ -33,7 +33,6 @@
             this.inGarageLabel = new System.Windows.Forms.Label();
             this.inCarSceneTextBox = new System.Windows.Forms.TextBox();
             this.inCarLabel = new System.Windows.Forms.Label();
-            this.currentSceneLabel = new System.Windows.Forms.Label();
             this.txtServerPasswordLabel = new System.Windows.Forms.Label();
             this.txtServerIPLabel = new System.Windows.Forms.Label();
             this.txtServerPassword = new System.Windows.Forms.TextBox();
@@ -56,7 +55,6 @@
             this.OBSGroupBox.Controls.Add(this.inGarageLabel);
             this.OBSGroupBox.Controls.Add(this.inCarSceneTextBox);
             this.OBSGroupBox.Controls.Add(this.inCarLabel);
-            this.OBSGroupBox.Controls.Add(this.currentSceneLabel);
             this.OBSGroupBox.Controls.Add(this.txtServerPasswordLabel);
             this.OBSGroupBox.Controls.Add(this.txtServerIPLabel);
             this.OBSGroupBox.Controls.Add(this.txtServerPassword);
@@ -108,14 +106,6 @@
             this.inCarLabel.Size = new System.Drawing.Size(38, 13);
             this.inCarLabel.TabIndex = 20;
             this.inCarLabel.Text = "In Car:";
-            // 
-            // currentSceneLabel
-            // 
-            this.currentSceneLabel.AutoSize = true;
-            this.currentSceneLabel.Location = new System.Drawing.Point(133, 80);
-            this.currentSceneLabel.Name = "currentSceneLabel";
-            this.currentSceneLabel.Size = new System.Drawing.Size(0, 13);
-            this.currentSceneLabel.TabIndex = 19;
             // 
             // txtServerPasswordLabel
             // 
@@ -250,7 +240,6 @@
         private System.Windows.Forms.Label inGarageLabel;
         private System.Windows.Forms.TextBox inCarSceneTextBox;
         private System.Windows.Forms.Label inCarLabel;
-        private System.Windows.Forms.Label currentSceneLabel;
         private System.Windows.Forms.Label txtServerPasswordLabel;
         private System.Windows.Forms.Label txtServerIPLabel;
         private System.Windows.Forms.TextBox txtServerPassword;

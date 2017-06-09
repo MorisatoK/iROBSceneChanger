@@ -121,15 +121,18 @@ namespace iROBSceneChanger
         {
             BeginInvoke((MethodInvoker)delegate
             {
-                currentSceneLabel.Text = "Current Scene: " + newSceneName;
+                OBSStatus.Text = newSceneName;
             });
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
+            OBSStatus.Image = Resources.waiting;
+
             if (string.IsNullOrEmpty(inCarSceneTextBox.Text) || string.IsNullOrEmpty(inGarageSceneTextBox.Text))
             {
                 MessageBox.Show("You must provide OBS scenes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                OBSStatus.Image = Resources.disconnected;
                 return;
             }
 
@@ -140,11 +143,13 @@ namespace iROBSceneChanger
             catch (AuthFailureException)
             {
                 MessageBox.Show("Authentication failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                OBSStatus.Image = Resources.disconnected;
                 return;
             }
             catch (ErrorResponseException ex)
             {
                 MessageBox.Show("Connect failed : " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                OBSStatus.Image = Resources.disconnected;
                 return;
             }
 
@@ -154,19 +159,19 @@ namespace iROBSceneChanger
             if (scenesFound.Count() < 2)
             {
                 obs.Disconnect();
+                OBSStatus.Image = Resources.disconnected;
                 MessageBox.Show("Provided OBS scenes not found in scene collection.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
+            obsWsConnected = true;
             btnConnect.Enabled = false;
             txtServerIP.Enabled = false;
             txtServerPassword.Enabled = false;
             inCarSceneTextBox.Enabled = false;
             inGarageSceneTextBox.Enabled = false;
-            obsWsConnected = true;
-
-            btnConnect.Text = "Connected";
-            currentSceneLabel.Text = "Current Scene: " + obs.GetCurrentScene().Name;
+            OBSStatus.Image = Resources.connected;
+            OBSStatus.Text = obs.GetCurrentScene().Name;
         }
         #endregion
 
