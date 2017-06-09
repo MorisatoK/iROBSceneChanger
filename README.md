@@ -1,7 +1,7 @@
 # iROBSceneChanger
 Simple tool to control OBS via Websockets using the iRacing SDK
 
-Out of personal requirements to switch between two scenes in OBS depending on being in our out of the car in iRacing I created this little tool. Because why remember to do it (you don't) when you can automate it?
+Out of personal requirements to switch between two scenes in OBS while streaming in VR depending on being in or out of the car in iRacing I created this little tool. Because why remember to do it (you won't) when you can automate it?
 
 ## Requirements
 + .NET Runtime > 4.5.1
