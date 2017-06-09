@@ -54,6 +54,9 @@
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>assets\iROBSceneChanger.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="iRacingSdkWrapper">
       <HintPath>..\..\iRacingSimulator\bin\Debug\iRacingSdkWrapper.dll</HintPath>
@@ -142,6 +145,7 @@
     <Content Include="assets\connected.png" />
     <Content Include="assets\disconnected.png" />
     <Content Include="assets\iRacingSim.ico" />
+    <Content Include="assets\iROBSceneChanger.ico" />
     <Content Include="assets\obs.ico" />
     <Content Include="assets\waiting.png" />
   </ItemGroup>

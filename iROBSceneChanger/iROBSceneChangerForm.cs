@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing;
 using iRacingSdkWrapper;
 using OBSWebsocketDotNet;
 using iROBSceneChanger.Properties;
@@ -21,6 +22,7 @@ namespace iROBSceneChanger
         {
             InitializeComponent();
             this.Text = Application.ProductName + " " + Application.ProductVersion;
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
             // Create a new instance of the SdkWrapper object
             wrapper = new SdkWrapper();
